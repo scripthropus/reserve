@@ -21,6 +21,14 @@ function isSameDay(a: Date, b: Date) {
     a.getDate() === b.getDate();
 }
 
+function formatTime(dateStr: string): string {
+  return new Date(dateStr).toLocaleTimeString("ja-JP", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Asia/Tokyo",
+  });
+}
+
 export default function ReservationGrid() {
   const days = getWeekDays();
   const today = new Date();
@@ -83,7 +91,7 @@ export default function ReservationGrid() {
                         key={e.id}
                         className="text-xs bg-blue-100 text-blue-800 rounded px-1.5 py-0.5 mb-0.5"
                       >
-                        {e.organizer}・{e.subject}
+                      {formatTime(e.starts_at)}〜{formatTime(e.ends_at)}/{e.organizer}・{e.subject}
                       </div>
                     ))}
                   </td>
