@@ -31,7 +31,7 @@ type DB struct {
 }
 
 func newDB() (*DB, error) {
-	pool, err := pgxpool.New(context.Background(), getDSN)
+	pool, err := pgxpool.New(context.Background(), getDSN())
 	if err != nil {
 		return nil, err
 	}

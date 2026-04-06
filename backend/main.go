@@ -21,5 +21,5 @@ func main() {
 	mux.HandleFunc("DELETE /reservations/{id}", h.delete)
 
 	log.Println("listening on :8080")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	log.Fatal(http.ListenAndServe(":8080", corsMiddleware(mux)))
 }

@@ -16,6 +16,19 @@ func newHandler(db *DB) *handler {
 	return &handler{db: db}
 }
 
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusNoContent)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 func (h *handler) list(w http.ResponseWriter, r *http.Request) {
 	roomID := r.URL.Query().Get("room_id")
 	result, err := h.db.list(r.Context(), roomID)
