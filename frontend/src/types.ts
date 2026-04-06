@@ -7,3 +7,5 @@ export type Reservation = {
   starts_at: string;
   ends_at: string;
 };
+
+export type ReservationInput = Omit<Reservation, "id">;
