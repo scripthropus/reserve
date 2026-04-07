@@ -11,8 +11,11 @@ type Props = {
 	onClose: () => void;
 };
 
-function toISO(dateTimeLocal: string): string {
-	return new Date(dateTimeLocal + ":00+09:00").toISOString();
+function toISO(date: Date, time: string): string {
+	const y = date.getFullYear();
+	const m = String(date.getMonth() + 1).padStart(2, "0");
+	const d = String(date.getDate()).padStart(2, "0");
+	return new Date(`${y}-${m}-${d}T${time}:00+09:00`).toISOString();
 }
 
 const timeOptions = Array.from({ length: 25 * 12 }, (_, i) => {
@@ -58,8 +61,8 @@ export default function ReservationModal({
 			organizer,
 			subject,
 			reason,
-			starts_at: toISO(startsAt),
-			ends_at: toISO(endsAt),
+			starts_at: toISO(date, startsAt),
+			ends_at: toISO(date, endsAt),
 		});
 		setLoading(false);
 		if (err) {
