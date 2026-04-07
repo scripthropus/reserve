@@ -21,6 +21,13 @@ const timeOptions = Array.from({ length: 25 * 12 }, (_, i) => {
 	return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }).filter((t) => t <= "21:00");
 
+function formatDate(date: Date): string {
+	const m = date.getMonth() + 1;
+	const d = date.getDate();
+	const dow = ["日", "月", "火", "水", "木", "金", "土"][date.getDay()];
+	return `${m}月${d}日（${dow}）`;
+}
+
 export default function ReservationModal({
 	date,
 	roomId,
@@ -84,7 +91,7 @@ export default function ReservationModal({
 				onClick={(e) => e.stopPropagation()}
 			>
 				<h2 className="text-base font-medium mb-4">
-					{isEdit ? "予約を編集" : "新規予約"} — {roomId}
+					{isEdit ? "予約を編集" : "新規予約"} — {roomId}／{formatDate(date)}
 				</h2>
 
 				{error && <p className="text-red-500 text-sm mb-3">{error}</p>}
