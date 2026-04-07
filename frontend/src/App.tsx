@@ -1,13 +1,11 @@
-import ReservationGrid from "./componets/ReservationGrid"
+import ReservationGrid from "./componets/ReservationGrid";
 
 function App() {
-
-  return (
-    <>
-    <ReservationGrid/>
-    </>
-  )
+	return (
+		<>
+			<ReservationGrid />
+		</>
+	);
 }
 
-export default App
-
+export default App;
