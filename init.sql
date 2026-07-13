@@ -20,10 +20,13 @@ CREATE TABLE reservations (
     )
 );
 
-INSERT INTO reservations (room_id, organizer, subject, starts_at, ends_at) VALUES
-  ('学科会議室', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
-  ('会議室1', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
-  ('会議室2', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
-  ('会議室3', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
-  ('会議室4', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
-  ('会議室5', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00');
+INSERT INTO reservations (room_id, organizer, subject, reason, starts_at, ends_at) VALUES
+  ('学科会議室', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室1', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室2', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室3', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室4', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室5', 'system', 'placeholder', '', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00');
+
+GRANT ALL ON ALL TABLES IN SCHEMA public TO masaki;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO masaki;
