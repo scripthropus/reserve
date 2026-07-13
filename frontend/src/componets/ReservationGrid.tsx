@@ -123,6 +123,7 @@ export default function ReservationGrid({ currentUser }: Props) {
 													{e.organizer}・{e.subject}
 												</div>
 											))}
+                        <div className="min-h-8"/>
 										</td>
 									);
 								})}
