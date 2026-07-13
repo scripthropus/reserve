@@ -5,6 +5,7 @@ import { formatTime } from "./ReservationGrid";
 type Props = {
 	date: Date;
 	roomId: string;
+	currentUser: string;
 	reservation?: Reservation;
 	onSubmit: (input: ReservationInput) => Promise<string | null>;
 	onDelete?: () => Promise<string | null>;
@@ -34,6 +35,7 @@ function formatDate(date: Date): string {
 export default function ReservationModal({
 	date,
 	roomId,
+	currentUser,
 	reservation,
 	onSubmit,
 	onDelete,
@@ -41,7 +43,9 @@ export default function ReservationModal({
 }: Props) {
 	const isEdit = !!reservation;
 
-	const [organizer, setOrganizer] = useState(reservation?.organizer ?? "");
+	const [organizer, setOrganizer] = useState(
+		reservation?.organizer ?? currentUser,
+	);
 	const [subject, setSubject] = useState(reservation?.subject ?? "");
 	const [reason, setReason] = useState(reservation?.reason ?? "");
 	const [startsAt, setStartsAt] = useState(

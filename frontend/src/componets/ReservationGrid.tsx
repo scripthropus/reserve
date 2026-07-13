@@ -33,11 +33,13 @@ export function formatTime(dateStr: string): string {
 	});
 }
 
+type Props = { currentUser: string };
+
 type ModalState =
 	| { mode: "create"; date: Date; roomId: string }
 	| { mode: "edit"; reservation: Reservation };
 
-export default function ReservationGrid() {
+export default function ReservationGrid({ currentUser }: Props) {
 	const days = getWeekDays();
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
@@ -134,6 +136,7 @@ export default function ReservationGrid() {
 				<ReservationModal
 					date={modal.date}
 					roomId={modal.roomId}
+					currentUser={currentUser}
 					onSubmit={create}
 					onClose={() => setModal(null)}
 				/>
@@ -142,6 +145,7 @@ export default function ReservationGrid() {
 				<ReservationModal
 					date={new Date(modal.reservation.starts_at)}
 					roomId={modal.reservation.room_id}
+					currentUser={currentUser}
 					reservation={modal.reservation}
 					onSubmit={(input) => update(modal.reservation.id, input)}
 					onDelete={() => remove(modal.reservation.id)}

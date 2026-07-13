@@ -19,3 +19,11 @@ CREATE TABLE reservations (
       tstzrange(starts_at, ends_at, '[)') WITH &&
     )
 );
+
+INSERT INTO reservations (room_id, organizer, subject, starts_at, ends_at) VALUES
+  ('学科会議室', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室1', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室2', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室3', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室4', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00'),
+  ('会議室5', 'system', 'placeholder', '2000-01-01 00:00:00+00', '2000-01-01 00:05:00+00');
